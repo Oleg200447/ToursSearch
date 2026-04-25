@@ -1,0 +1,18 @@
+services:
+  tour_search_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tour_search_service
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8050:8000"
+    networks:
+      - travel_network
+
+networks:
+  travel_network:
+    name: travel_network
+    external: true
